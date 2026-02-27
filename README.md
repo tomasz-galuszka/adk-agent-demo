@@ -10,17 +10,19 @@ echo -e '\n# Pyenv' >>  ~/.zshrc
 echo -e '\neval "$(pyenv init -)"' >>  ~/.zshrc
 echo -e '\neval "$(pyenv virtualenv-init -)"' >>  ~/.zshrc
 ```
-## Build
+## Build and create virtualenv
 ```bash
 uv sync
 ```
 
 ## Run via google local ui 
 ```bash
+source .venv/bin/activate
 adk web --port 8080 # web interface 
 ```
 
 ## Run via google local ui
 ```bash
+source .venv/bin/activate
 python main.py
 ```
