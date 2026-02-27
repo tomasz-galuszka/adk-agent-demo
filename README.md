@@ -15,6 +15,12 @@ echo -e '\neval "$(pyenv virtualenv-init -)"' >>  ~/.zshrc
 uv sync
 ```
 
+## Provide API Google API keys to access gemini models
+Login using your GA to https://aistudio.google.com/api-keys and create new key then paste to .env files for each agent
+```
+    GOOGLE_API_KEY=COPY_PASTE_YOUR_CODE HERE
+```
+
 ## Run via google local ui 
 ```bash
 source .venv/bin/activate
