@@ -1,3 +1,4 @@
+import chromadb
 from dotenv import load_dotenv
 from google.adk.agents.llm_agent import Agent
 from google.adk.models import LiteLlm
@@ -7,6 +8,10 @@ from time_agent.tools import get_time
 load_dotenv()
 
 MODEL = 'ollama_chat/llama3.2:latest'
+
+chroma_client = chromadb.HttpClient(host='localhost', port=8000)
+collections = chroma_client.list_collections()
+print(collections)
 
 time_agent = Agent(
     model=LiteLlm(model=MODEL),
