@@ -1,5 +1,9 @@
 ## Local setup
 ```bash
+# Follow https://docs.ollama.com/quickstart
+# Then pull the model
+ollama pull qwen2.5vl
+
 brew install pyenv
 brew install pyenv-virtualenv
 pyenv install -s 3.13.12
