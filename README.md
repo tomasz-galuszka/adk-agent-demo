@@ -2,7 +2,7 @@
 ```bash
 # Follow https://docs.ollama.com/quickstart
 # Then pull the model
-ollama pull qwen2.5vl
+ollama pull llama3.2
 
 brew install pyenv
 brew install pyenv-virtualenv
@@ -25,13 +25,13 @@ Login using your GA to https://aistudio.google.com/api-keys and create new key t
     GOOGLE_API_KEY=COPY_PASTE_YOUR_CODE HERE
 ```
 
-## Run via google local ui 
+## Run in the Google local ui 
 ```bash
 source .venv/bin/activate
 adk web --port 8080 # web interface 
 ```
 
-## Run via google local ui
+## Run in the command line
 ```bash
 source .venv/bin/activate
 python main.py
