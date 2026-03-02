@@ -34,7 +34,7 @@ source .venv/bin/activate
 adk web --port 8080 # web interface 
 ```
 
-## Run via google local ui
+## Run via google cmd line
 ```bash
 source .venv/bin/activate
 python main.py
