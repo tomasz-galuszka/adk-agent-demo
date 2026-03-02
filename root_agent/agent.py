@@ -1,13 +1,16 @@
+from dotenv import load_dotenv
+from google.adk.agents import LlmAgent
 from google.adk.agents.llm_agent import Agent
 from google.adk.models import LiteLlm
 
 from reports_agent.agent import stock_report_agent
 
 MODEL = 'ollama_chat/llama3.2:latest'
+load_dotenv()
 
-root_agent = Agent(
+root_agent: LlmAgent = Agent(
     model=LiteLlm(model=MODEL),
-    name='root_financial_agent',
+    name='root_agent',
     description="Main agent: Providers stock company analysis and data based on indexed reports.",
     instruction="You are the main Agent. Your job is to provide stock companies data and analysis information using specialized subagents."
                 "You can describe what you can do by saying 'I can provide stock company data and analysis based on indexed reports.'"
