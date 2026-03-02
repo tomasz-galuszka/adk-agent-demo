@@ -2,6 +2,7 @@ import asyncio
 
 from orchestrator import run_conversation, APP_NAME, USER_ID, SESSION_ID
 from sessions import init_session
+from time_agent.agent import index_pdf
 
 if __name__ == "__main__":
     try:
@@ -10,3 +11,4 @@ if __name__ == "__main__":
         asyncio.run(run_conversation(question="What is the weather like in London?", session_id=session.id))
     except Exception as e:
         print(f"An error occurred: {e}")
+index_pdf()

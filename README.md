@@ -4,7 +4,7 @@
 # Then pull the model
 ollama pull qwen2.5vl
 ollama pull nomic-embed-text
-ollama show nomic-embed-text
+    ollama show nomic-embed-text
 ollama show qwen2.5vl
 
 brew install pyenv
