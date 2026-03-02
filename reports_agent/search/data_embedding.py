@@ -4,7 +4,8 @@ import requests
 
 EMBED_MODEL = "nomic-embed-text"
 
-def create_embedding(text: str):
+
+def _create_embedding(text: str):
     response = requests.post(
         f"{os.getenv("OLLAMA_API_BASE")}/api/embeddings",
         json={

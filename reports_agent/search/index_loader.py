@@ -2,11 +2,13 @@ import uuid
 
 from tqdm import tqdm
 
-from reports_agent.search.data_embedding import create_embedding
-from reports_agent.search.data_extractor import load_pdf, chunk_text
+from .data_embedding import _create_embedding
+from .data_extractor import _chunk_text, _load_pdf
+from .db import _chroma_client
 
 
-def load_data(destination_collection, pdf_path):
+def load_data(pdf_path):
+    destination_collection = _chroma_client.get_or_create_collection(name="company_reports")
     count = destination_collection.count()
     if count > 0:
         print(f"📦 Kolekcja zawiera już {count} dokumentów. Pomijam indeksowanie.")
@@ -14,11 +16,11 @@ def load_data(destination_collection, pdf_path):
 
     print("📄 Kolekcja pusta. Rozpoczynam indeksowanie PDF...")
 
-    text = load_pdf(pdf_path)
-    chunks = chunk_text(text)
+    text = _load_pdf(pdf_path)
+    chunks = _chunk_text(text)
 
     for i, chunk in enumerate(tqdm(chunks)):
-        embedding = create_embedding(chunk)
+        embedding = _create_embedding(chunk)
 
         destination_collection.add(
             ids=[str(uuid.uuid4())],

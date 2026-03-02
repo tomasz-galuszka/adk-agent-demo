@@ -4,16 +4,14 @@ from google.adk.agents.llm_agent import Agent
 from google.adk.models import LiteLlm
 from google.genai import types
 
-from reports_agent.search.db import chroma_client
-from reports_agent.search.index_loader import load_data
-from reports_agent.tools import search_company_report
+from .search import load_data
+from .tools import _search_company_report
 
 MODEL = 'ollama_chat/llama3.2:latest'
 
 
 def init(callback_context) -> Optional[types.Content]:
-    collection = chroma_client.get_or_create_collection(name="company_reports")
-    load_data(collection, "report.pdf")
+    load_data("report.pdf")
     return None
 
 
@@ -25,10 +23,10 @@ stock_report_agent = Agent(
         "You are a professional financial assistant.\n\n"
         "RULES:\n"
         "1. If question relates to revenue, profit, annual report, risks, "
-        "strategy or management — ALWAYS use tool 'search_company_report'.\n"
+        "strategy or management — ALWAYS use tool '_search_company_report'.\n"
         "2. If question relates to current time — use 'get_time'.\n"
         "3. Base answer strictly on tool output when tool is used."
     ),
-    tools=[search_company_report],
+    tools=[_search_company_report],
     before_agent_callback=init
 )

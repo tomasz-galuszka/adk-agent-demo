@@ -2,7 +2,7 @@ from google.adk.agents import LlmAgent
 from google.adk.agents.llm_agent import Agent
 from google.adk.models import LiteLlm
 
-from reports_agent.agent import stock_report_agent
+from reports_agent import stock_report_agent
 
 MODEL = 'ollama_chat/llama3.2:latest'
 

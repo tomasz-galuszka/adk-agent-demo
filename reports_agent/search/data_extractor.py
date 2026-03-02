@@ -3,7 +3,8 @@ from pypdf import PdfReader
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 200
 
-def load_pdf(path: str) -> str:
+
+def _load_pdf(path: str) -> str:
     reader = PdfReader(path)
     text = ""
     for page in reader.pages:
@@ -13,7 +14,7 @@ def load_pdf(path: str) -> str:
     return text
 
 
-def chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
+def _chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
     chunks = []
     start = 0
 
@@ -22,4 +23,4 @@ def chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
         chunks.append(text[start:end])
         start += chunk_size - overlap
 
-    return chunks
+
