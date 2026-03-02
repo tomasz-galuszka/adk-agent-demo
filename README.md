@@ -3,6 +3,7 @@
 # Follow https://docs.ollama.com/quickstart
 # Then pull the model
 ollama pull llama3.2
+ollama show llama3.2
 
 brew install pyenv
 brew install pyenv-virtualenv
