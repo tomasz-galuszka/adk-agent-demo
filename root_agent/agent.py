@@ -1,10 +1,20 @@
+import logging
+from typing import Optional
+
 from google.adk.agents import LlmAgent
 from google.adk.agents.llm_agent import Agent
 from google.adk.models import LiteLlm
+from google.genai import types
 
 from reports_agent import stock_report_agent
 
 MODEL = 'ollama_chat/llama3.2:latest'
+logger = logging.getLogger(__name__)
+
+def init_root_agent(callback_context) -> Optional[types.Content]:
+    logger.info("Root agent initialization finished")
+    return None
+
 
 root_agent: LlmAgent = Agent(
     model=LiteLlm(model=MODEL),
@@ -15,5 +25,6 @@ root_agent: LlmAgent = Agent(
                 "Please answer on questions in human readable format. If you don't know the answer, say you don't know. Always try to use subagents if the question is related to stock companies."
                 "Delegate question about stock company data and analysis to 'stock_report_agent'."
                 "Handle only questions related to stock companies. If the question is not related to stick companies respond with 'I can only answer questions about stock companies.'",
-    sub_agents=[stock_report_agent]
+    sub_agents=[stock_report_agent],
+    before_agent_callback=init_root_agent
 )

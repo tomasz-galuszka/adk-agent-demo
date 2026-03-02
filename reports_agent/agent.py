@@ -1,3 +1,4 @@
+import logging
 from typing import Optional
 
 from google.adk.agents.llm_agent import Agent
@@ -8,10 +9,14 @@ from .search import load_data
 from .tools import _search_company_report
 
 MODEL = 'ollama_chat/llama3.2:latest'
+logger = logging.getLogger(__name__)
 
 
 def init(callback_context) -> Optional[types.Content]:
+    logger.info("Stock report agent initialization started")
     load_data("report.pdf")
+    logger.info("Stock report agent initialization finished")
+
     return None
 
 

@@ -15,6 +15,7 @@ dependencies = [
     { name = "google-adk" },
     { name = "litellm" },
     { name = "pypdf" },
+    { name = "python-dotenv" },
     { name = "requests" },
     { name = "tqdm" },
 ]
@@ -25,6 +26,7 @@ requires-dist = [
     { name = "google-adk", specifier = ">=1.25.1" },
     { name = "litellm", specifier = ">=1.81.16" },
     { name = "pypdf", specifier = ">=6.7.4" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
     { name = "requests", specifier = ">=2.32.5" },
     { name = "tqdm", specifier = ">=4.67.3" },
 ]

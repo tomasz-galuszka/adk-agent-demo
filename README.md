@@ -31,11 +31,11 @@ Login using your GA to https://aistudio.google.com/api-keys and create new key t
 ## Run via local ui from google 
 ```bash
 source .venv/bin/activate
-adk web --port 8080 # web interface 
+adk web
 ```
 
 ## Run via cmd line
 ```bash
 source .venv/bin/activate
-python main.py
+adk run root_agent
 ```
