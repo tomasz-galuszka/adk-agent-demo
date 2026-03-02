@@ -2,8 +2,8 @@ import uuid
 
 from tqdm import tqdm
 
-from search.data_embedding import create_embedding
-from search.data_extractor import load_pdf, chunk_text
+from reports_agent.search.data_embedding import create_embedding
+from reports_agent.search.data_extractor import load_pdf, chunk_text
 
 
 def load_data(destination_collection, pdf_path):
