@@ -13,7 +13,7 @@ When the user ask a question `What can you do?` please respond with a list of su
 
 When a user asks question:
 
-1. If the question is related to company reports delegate it to 'stock_report_agent'.
+1. If the question is related to company reports delegate it to 'reports_agent'.
 2. Otherwise, respond politely that you don't know the answer.
 
 ---
