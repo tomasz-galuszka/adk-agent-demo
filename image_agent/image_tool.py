@@ -5,6 +5,7 @@ import logging
 import torch
 from PIL import Image
 from diffusers import StableDiffusionXLInpaintPipeline
+from google.genai.types import Blob
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +21,10 @@ def progress_callback(step: int, timestep: int, latents):
 
 
 
-def edit_image_tool(image_bytes: bytes | str, prompt: str) -> bytes:
+def edit_image_tool(image_bytes: bytes | str, prompt: str) -> Blob:
     """
-        Use this tool to edit an image based on a text prompt.
+        Use this tool to edit an image based on a text prompt. The returned image will be inpainted according to the prompt.
+         The input image should be provided as bytes, and the output will be a PNG image so it can be rendered.
     """
     logger.info(f"-- {prompt}")
     logger.info(f"-- {image_bytes}")
@@ -49,7 +51,15 @@ def edit_image_tool(image_bytes: bytes | str, prompt: str) -> bytes:
     # Extract the first image
     edited_image = edited_image_output.images[0]
 
+    logger.info("Saving image to bytes...")
+
     # Save to bytes
     output_bytes = io.BytesIO()
     edited_image.save(output_bytes, format="PNG")
-    return output_bytes.getvalue()
+    logger.info("Saving image to bytes FINISHED")
+
+    result = Blob(data=output_bytes.getvalue(), mime_type="image/png", display_name="edited_image.png")
+
+    image = result.as_image()
+    image.save("edited_image.png")
+    return result
