@@ -39,3 +39,7 @@ adk web
 source .venv/bin/activate
 adk run root_agent
 ```
+
+## Rozszerzamy sub agenta do analizy obrazków
+- wykrywanie obiektów
+- 

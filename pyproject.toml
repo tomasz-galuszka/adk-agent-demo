@@ -8,6 +8,7 @@ dependencies = [
     "chromadb>=1.5.1",
     "google-adk>=1.25.1",
     "litellm>=1.81.16",
+    "pillow>=12.1.1",
     "pypdf>=6.7.4",
     "python-dotenv>=1.0.0",
     "requests>=2.32.5",
